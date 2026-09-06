@@ -1,11 +1,11 @@
 export const testUser = {
-  username: 'towsif.mts1',
-  password: 'Shuvo123#'
+  username: 'tanjir.sa',
+  password: 'Abcd1234#$'
 };
 
 export const validUser = {
-  username: 'towsif.mts1',
-  password: 'Shuvo123#'
+  username: 'tanjir.sa',
+  password: 'Abcd1234#$'
 };
 
 export const invalidUser = {
