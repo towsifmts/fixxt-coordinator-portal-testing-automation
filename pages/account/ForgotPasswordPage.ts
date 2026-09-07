@@ -40,23 +40,23 @@ export class ForgotPasswordPage {
 
     this.submitButton = page
       .getByRole('button', { 
-          name: 'Submit' 
-        });
+        name: 'Submit' 
+      });
 
     this.forgotUsernameLink = page
       .getByRole('link', {
-          name: 'Forgot User Name?'
-        });
+        name: 'Forgot User Name?'
+      });
 
     this.backToLoginLink = page
       .getByRole('link', {
-          name: 'Back to Login'
-        });
+        name: 'Back to Login'
+      });
 
     this.privacyPolicyLink = page
       .getByRole('link', {
-          name: 'Privacy Policy'
-        });
+        name: 'Privacy Policy'
+      });
   }
 
   async goto() {

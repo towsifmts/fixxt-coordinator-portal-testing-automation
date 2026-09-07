@@ -62,7 +62,10 @@ test.describe('Coordinator App - Login Page', () => {
   test('TC-004: Password input should be masked by default', 
     async ({ loginPage }) => {
       await expect(loginPage.passwordInput)
-        .toHaveAttribute(HtmlAttribute.TYPE, InputType.Password);
+        .toHaveAttribute(
+          HtmlAttribute.TYPE, 
+          InputType.Password
+        );
     }
   );
 
@@ -74,7 +77,10 @@ test.describe('Coordinator App - Login Page', () => {
   );
 
   test('TC-006: Login with valid credentials', 
-    async ({ page, loginPage }) => {
+    async ({ 
+      page, 
+      loginPage 
+    }) => {
       await loginPage.login(
         validUser.username, 
         validUser.password
@@ -128,7 +134,10 @@ test.describe('Coordinator App - Login Page', () => {
   );
 
   test('TC-010: Invalid username and invalid password should not authenticate', 
-    async ({ page, loginPage }) => {
+    async ({ 
+      page, 
+      loginPage 
+    }) => {
       await loginPage.login(
         invalidUser.username, 
         invalidUser.password
@@ -188,7 +197,10 @@ test.describe('Coordinator App - Login Page', () => {
   );
 
   test('TC-013: Forgot username link should navigate to forgot username page', 
-    async ({ page, loginPage }) => {
+    async ({ 
+      page, 
+      loginPage 
+    }) => {
       await expect(loginPage.forgotUsernameLink)
         .toHaveAttribute(
           HtmlAttribute.HREF,
@@ -203,7 +215,10 @@ test.describe('Coordinator App - Login Page', () => {
   );
 
   test('TC-014: Forgot password link should navigate to forgot password page', 
-    async ({ page, loginPage }) => {
+    async ({ 
+      page, 
+      loginPage 
+    }) => {
       await expect(loginPage.forgotPasswordLink)
         .toHaveAttribute(
           HtmlAttribute.HREF,
@@ -218,7 +233,10 @@ test.describe('Coordinator App - Login Page', () => {
   );
 
   test('TC-015: Privacy Policy should be an external link opened in a new tab', 
-    async ({ page, loginPage }) => {
+    async ({ 
+      page, 
+      loginPage 
+    }) => {
         const popupEvent = page.waitForEvent('popup');
 
         await loginPage.privacyPolicyLink.click();
@@ -233,7 +251,10 @@ test.describe('Coordinator App - Login Page', () => {
   );
 
   test('TC-016: Privacy Policy should open successfully in a new tab', 
-    async ({ page, loginPage }) => {
+    async ({ 
+      page, 
+      loginPage 
+    }) => {
       const popupPromise = page.waitForEvent('popup');
 
       await loginPage.privacyPolicyLink.click();
@@ -358,7 +379,10 @@ test.describe('Coordinator App - Login Page', () => {
   );
 
   test('TC-026: Login page should remain usable on mobile viewport', 
-    async ({ page, loginPage }) => {
+    async ({ 
+      page, 
+      loginPage 
+    }) => {
       await page.setViewportSize(
         { 
           width: 390, 
@@ -380,7 +404,10 @@ test.describe('Coordinator App - Login Page', () => {
   );
  
   test('TC-027: Login page should remain usable on desktop viewport', 
-    async ({ page, loginPage }) => {
+    async ({ 
+      page, 
+      loginPage 
+    }) => {
       await page.setViewportSize(
         {
           width: 1920, 
@@ -421,7 +448,10 @@ test.describe('Coordinator App - Login Page', () => {
   );
   
   test('TC-030: Page should not expose the entered password in the URL', 
-    async ({ page, loginPage }) => {
+    async ({ 
+      page, 
+      loginPage 
+    }) => {
       await loginPage.fillUsername(testUser.username);
       await loginPage.fillPassword(testUser.password);
   

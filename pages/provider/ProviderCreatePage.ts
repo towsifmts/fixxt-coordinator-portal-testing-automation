@@ -11,7 +11,6 @@ export class ProviderCreatePage {
   readonly providerCreatePath =
     `/agency/${AGENCY_ID}/provider/create`;
 
-  // Provider Details
   readonly pageTitle: Locator;
   readonly providerDetailsSection: Locator;
 
@@ -28,7 +27,6 @@ export class ProviderCreatePage {
   readonly postcodeInput: Locator;
   readonly additionalInformationInput: Locator;
 
-  // Primary Contact
   readonly primaryContactSection: Locator;
   readonly firstNameInput: Locator;
   readonly lastNameInput: Locator;
@@ -36,7 +34,6 @@ export class ProviderCreatePage {
   readonly mobileInput: Locator;
   readonly phoneInput: Locator;
 
-  // Support Details
   readonly supportDetailsSection: Locator;
   readonly supportTypeInput: Locator;
   readonly serviceTypesInput: Locator;
@@ -53,28 +50,28 @@ export class ProviderCreatePage {
 
     this.pageTitle = page
       .getByRole('heading', { 
-          name: 'Create Provider' 
-        });
+        name: 'Create Provider' 
+      });
 
     this.providerDetailsSection = page
       .getByRole('heading', { 
-          name: 'Provider Details' 
-        });
+        name: 'Provider Details' 
+      });
 
     this.primaryContactSection = page
       .getByRole('heading', { 
-          name: 'Primary Contact' 
-        });
+        name: 'Primary Contact' 
+      });
 
     this.supportDetailsSection = page
       .getByRole('heading', { 
-          name: 'Support Details' 
-        });
+        name: 'Support Details' 
+      });
 
     this.abnInput = page
       .getByRole('textbox', { 
-          name: 'ABN' 
-        });
+        name: 'ABN' 
+      });
 
     this.abnSearchButton = page
       .locator('.abn-search-icon-button');
@@ -90,15 +87,15 @@ export class ProviderCreatePage {
 
     this.statusInput = page
       .getByRole('combobox', { 
-          name: 'Status' 
-        });
+        name: 'Status' 
+      });
 
     this.addressInput = page.getByLabel('Address');
 
     this.suburbInput = page
       .getByRole('combobox', { 
-          name: 'Suburb' 
-        });
+        name: 'Suburb' 
+      });
 
     this.stateInput = page.getByLabel('State');
 

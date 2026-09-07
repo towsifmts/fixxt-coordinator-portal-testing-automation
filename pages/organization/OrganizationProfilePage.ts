@@ -18,10 +18,14 @@ export class OrganizationProfilePage {
     this.page = page;
 
     this.providersMenu = page
-      .getByText('Providers', { exact: true });
+      .getByText('Providers', { 
+        exact: true 
+      });
 
     this.activeProvidersLink = page
-      .getByRole('link', { name: 'Active Providers' });
+      .getByRole('link', { 
+        name: 'Active Providers' 
+      });
   }
 
   async clickProvidersMenu() {

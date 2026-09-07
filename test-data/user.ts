@@ -1,11 +1,15 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 export const testUser = {
-  username: 'tanjir.sa',
-  password: 'Abcd1234#$'
+  username: 'test-user',
+  password: 'P@ssw0rd'
 };
 
 export const validUser = {
-  username: 'tanjir.sa',
-  password: 'Abcd1234#$'
+  username: process.env.LOGIN_USERNAME || '',
+  password: process.env.LOGIN_PASSWORD || ''
 };
 
 export const invalidUser = {

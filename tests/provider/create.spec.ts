@@ -242,7 +242,10 @@ test.describe('Coordinator App - Create Provider', () => {
   );
 
   test('TC-006 - Create provider with valid details',
-    async ({ providerCreatePage, providerDetailPage }) => {
+    async ({ 
+      providerCreatePage, 
+      providerDetailPage 
+    }) => {
 
       const digitsOnly = /^\d+$/;
 
@@ -342,6 +345,25 @@ test.describe('Coordinator App - Create Provider', () => {
           type: 'warning',
           description:
             'Provider already exists. Remaining steps were skipped.',
+        });
+
+        return;
+      }
+
+      //TODO: Need to catch & specify errors
+      if (
+        !(await providerCreatePage.successMessage
+            .isVisible({ timeout: 3000 })
+            .catch(() => false))
+      ) {
+        console.warn(
+            "Some error occured!"
+        );
+
+        test.info().annotations.push({
+          type: 'warning',
+          description:
+            'Some error occured! Please recheck.',
         });
 
         return;

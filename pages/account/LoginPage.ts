@@ -1,5 +1,4 @@
-import 
-{ 
+import { 
   Page, 
   Locator
 } from '@playwright/test';
@@ -32,14 +31,31 @@ export class LoginPage {
     this.usernameInput = page.getByLabel('Username');
     this.passwordInput = page.getByLabel('Password');
     
-    this.enterButton = page.getByRole('button', { name: 'Enter' });
+    this.enterButton = page
+      .getByRole('button', { 
+        name: 'Enter' 
+      });
 
-    this.forgotUsernameLink = page.getByRole('link', { name: 'Forgot username?' });
-    this.forgotPasswordLink = page.getByRole('link', { name: 'Forgot password?' });
-    this.privacyPolicyLink = page.getByRole('link', { name: 'Privacy Policy' });
+    this.forgotUsernameLink = page
+      .getByRole('link', { 
+        name: 'Forgot username?' 
+      });
 
-    this.visibilityShowButton = page.locator('button:has([data-testid="VisibilityIcon"])');
-    this.visibilityHideButton = page.locator('button:has([data-testid="VisibilityOffIcon"])');
+    this.forgotPasswordLink = page
+      .getByRole('link', { 
+        name: 'Forgot password?' 
+      });
+
+    this.privacyPolicyLink = page
+      .getByRole('link', { 
+        name: 'Privacy Policy' 
+      });
+
+    this.visibilityShowButton = page
+      .locator('button:has([data-testid="VisibilityIcon"])');
+
+    this.visibilityHideButton = page
+      .locator('button:has([data-testid="VisibilityOffIcon"])');
   }
 
   async goto() {
