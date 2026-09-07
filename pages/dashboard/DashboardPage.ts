@@ -1,32 +1,28 @@
 import 
 { 
   Page, 
-  Locator, 
-  expect
+  Locator
 } from '@playwright/test';
 
-export class DashboardPage 
-{
+export class DashboardPage {
   readonly page: Page;
 
   readonly organisationLookup: Locator;
   readonly organisationOptions: Locator;
 
-  constructor(page: Page) 
-  {
+  constructor(page: Page) {
     this.page = page;
 
     this.organisationLookup = page
-      .getByRole('combobox', 
-        { 
+      .getByRole('combobox', { 
           name: 'Organisation Lookup' 
         });
 
     this.organisationOptions = page.getByRole('option');
   }
 
-  async selectOrganisation(organisationIdOrName: string) 
-  {
+  async selectOrganisation(organisationIdOrName: string) {
+    
     await this.organisationLookup.fill(organisationIdOrName);
 
     await this.organisationOptions.first().waitFor();

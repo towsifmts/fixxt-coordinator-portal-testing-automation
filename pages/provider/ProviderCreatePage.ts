@@ -1,16 +1,11 @@
-import 
-{ 
+import { 
     Page, 
     Locator 
 } from '@playwright/test';
 
-import 
-{ 
-    AGENCY_ID 
-} from '../../test-data/provider';
+import { AGENCY_ID } from '../../test-data/provider';
 
-export class ProviderCreatePage 
-{
+export class ProviderCreatePage {
   readonly page: Page;
 
   readonly providerCreatePath =
@@ -53,37 +48,31 @@ export class ProviderCreatePage
   readonly providerAlreadyExistsMessage: Locator;
   readonly successMessage: Locator;
 
-  constructor(page: Page) 
-  {
+  constructor(page: Page) {
     this.page = page;
 
     this.pageTitle = page
-      .getByRole('heading', 
-        { 
+      .getByRole('heading', { 
           name: 'Create Provider' 
         });
 
     this.providerDetailsSection = page
-      .getByRole('heading', 
-        { 
+      .getByRole('heading', { 
           name: 'Provider Details' 
         });
 
     this.primaryContactSection = page
-      .getByRole('heading', 
-        { 
+      .getByRole('heading', { 
           name: 'Primary Contact' 
         });
 
     this.supportDetailsSection = page
-      .getByRole('heading', 
-        { 
+      .getByRole('heading', { 
           name: 'Support Details' 
         });
 
     this.abnInput = page
-      .getByRole('textbox', 
-        { 
+      .getByRole('textbox', { 
           name: 'ABN' 
         });
 
@@ -100,16 +89,14 @@ export class ProviderCreatePage
     this.branchInput = page.getByLabel('Branch');
 
     this.statusInput = page
-      .getByRole('combobox', 
-        { 
+      .getByRole('combobox', { 
           name: 'Status' 
         });
 
     this.addressInput = page.getByLabel('Address');
 
     this.suburbInput = page
-      .getByRole('combobox', 
-        { 
+      .getByRole('combobox', { 
           name: 'Suburb' 
         });
 
@@ -126,40 +113,34 @@ export class ProviderCreatePage
     this.emailInput = page.getByLabel('Email');
 
     this.mobileInput = page
-      .getByRole('textbox', 
-        { 
-          name: 'Mobile'
-        });
+      .getByRole('textbox', { 
+        name: 'Mobile'
+      });
 
     this.phoneInput = page
-      .getByRole('textbox', 
-        { name: 
-          'Phone'
-        });
+      .getByRole('textbox', {
+        name: 'Phone'
+      });
 
     this.supportTypeInput = page
-      .getByRole('combobox', 
-        { 
-          name: 'Support Type'
-        });
+      .getByRole('combobox', { 
+        name: 'Support Type'
+      });
 
     this.serviceTypesInput = page
-      .getByRole('combobox', 
-        { 
-          name: 'Service Types' 
-        });
+      .getByRole('combobox', { 
+        name: 'Service Types' 
+      });
 
     this.specialisationsInput = page
-      .getByRole('combobox', 
-        { 
-          name: 'Specialisations'
-        });
+      .getByRole('combobox', { 
+        name: 'Specialisations'
+      });
 
     this.saveButton = page
-      .getByRole('button', 
-        { 
-          name: 'Save' 
-        });
+      .getByRole('button', { 
+        name: 'Save' 
+      });
 
     this.providerAlreadyExistsMessage = page
       .getByRole('alert')
@@ -174,34 +155,28 @@ export class ProviderCreatePage
       });
   }
 
-  async goto() 
-  {
+  async goto() {
     await this.page.goto(this.providerCreatePath);
   }
 
-  async fillAbn(abn: string) 
-  {
+  async fillAbn(abn: string) {
     await this.abnInput.fill(abn);
   }
 
-  async clickAbnSearch() 
-  {
+  async clickAbnSearch() {
     await this.abnSearchButton.click();
   }
 
-  async verifyAbn(abn: string) 
-  {
+  async verifyAbn(abn: string) {
     await this.fillAbn(abn);
     await this.clickAbnSearch();
   }
 
-  async openStatusDropdown() 
-  {
+  async openStatusDropdown() {
     await this.statusInput.click();
   }
 
-  async selectStatus(status: string) 
-  {
+  async selectStatus(status: string) {
     await this.openStatusDropdown();
 
     await this.page
@@ -213,38 +188,31 @@ export class ProviderCreatePage
       .click();
   }
 
-  async fillFirstName(firstName: string) 
-  {
+  async fillFirstName(firstName: string) {
     await this.firstNameInput.fill(firstName);
   }
 
-  async fillLastName(lastName: string) 
-  {
+  async fillLastName(lastName: string) {
     await this.lastNameInput.fill(lastName);
   }
 
-  async fillEmail(email: string) 
-  {
+  async fillEmail(email: string) {
     await this.emailInput.fill(email);
   }
 
-  async fillMobile(mobile: string) 
-  {
+  async fillMobile(mobile: string) {
     await this.mobileInput.fill(mobile);
   }
 
-  async fillPhone(phone: string) 
-  {
+  async fillPhone(phone: string) {
     await this.phoneInput.fill(phone);
   }
 
-  async openSupportTypeDropdown() 
-  {
+  async openSupportTypeDropdown() {
     await this.supportTypeInput.click();
   }
 
-  async selectSupportType(supportType: string) 
-  {
+  async selectSupportType(supportType: string) {
     await this.openSupportTypeDropdown();
 
     await this.page
@@ -256,18 +224,15 @@ export class ProviderCreatePage
       .click();
   }
 
-  async openServiceTypesDropdown() 
-  {
+  async openServiceTypesDropdown() {
     await this.serviceTypesInput.click();
   }
 
-  getServiceTypeOptions() 
-  {
+  getServiceTypeOptions() {
     return this.page.locator('[role="option"][data-value]');
   }
 
-  async selectServiceTypes(serviceTypes: string[]) 
-  {
+  async selectServiceTypes(serviceTypes: string[]) {
     await this.openServiceTypesDropdown();
 
     for (const serviceType of serviceTypes) 
@@ -282,13 +247,11 @@ export class ProviderCreatePage
     }
   }
 
-  async openSpecialisationsDropdown() 
-  {
+  async openSpecialisationsDropdown() {
     await this.specialisationsInput.click();
   }
 
-  async selectSpecialisations(specialisations: string[]) 
-  {
+  async selectSpecialisations(specialisations: string[]) {
     await this.openSpecialisationsDropdown();
 
     for (const specialisation of specialisations) 
@@ -303,8 +266,7 @@ export class ProviderCreatePage
     }
   }
 
-  async clickSave() 
-  {
+  async clickSave() {
     await this.saveButton.click();
   }
 }

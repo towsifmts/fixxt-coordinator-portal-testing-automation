@@ -1,53 +1,25 @@
-import 
-{ 
+import { 
   test as base, 
   expect 
 } from '@playwright/test';
 
-import 
-{ 
-  LoginPage 
-} from '../pages/account/LoginPage';
+import { LoginPage } from '../pages/account/LoginPage';
 
-import 
-{ 
-  ForgotUsernamePage 
-} from '../pages/account/ForgotUsernamePage';
+import { ForgotUsernamePage } from '../pages/account/ForgotUsernamePage';
 
-import 
-{ 
-  ForgotPasswordPage 
-} from '../pages/account/ForgotPasswordPage';
+import { ForgotPasswordPage } from '../pages/account/ForgotPasswordPage';
 
-import 
-{
-  DashboardPage 
-} from '../pages/dashboard/DashboardPage';
+import { DashboardPage } from '../pages/dashboard/DashboardPage';
 
-import 
-{ 
-  OrganizationProfilePage 
-} from '../pages/organization/OrganizationProfilePage';
+import { OrganizationProfilePage } from '../pages/organization/OrganizationProfilePage';
 
-import 
-{ 
-  ProviderCreatePage 
-} from '../pages/provider/ProviderCreatePage';
+import { ProviderCreatePage } from '../pages/provider/ProviderCreatePage';
 
-import 
-{ ProviderEditPage 
+import { ProviderEditPage } from '../pages/provider/ProviderEditPage';
 
-} from '../pages/provider/ProviderEditPage';
+import { ProviderDetailPage } from '../pages/provider/ProviderDetailPage';
 
-import 
-{ 
-  ProviderDetailPage 
-} from '../pages/provider/ProviderDetailPage';
-
-import 
-{ 
-  ProviderListPage 
-} from '../pages/provider/ProviderListPage';
+import { ProviderListPage } from '../pages/provider/ProviderListPage';
 
 type Fixtures = {
   loginPage: LoginPage;
@@ -63,63 +35,51 @@ type Fixtures = {
   providerListPage: ProviderListPage;
 };
 
-export const test = base.extend<Fixtures>
-(
-  {
-    loginPage: 
-      async ({ page }, use) => 
-      {
-        await use(new LoginPage(page));
+export const test = base.extend<Fixtures>({
+  loginPage: 
+    async ({ page }, use) => {
+      await use(new LoginPage(page));
+    },
+
+  dashboardPage: 
+    async ({ page }, use) => {
+      await use(new DashboardPage(page));
+    },
+
+  organizationProfilePage: 
+    async ({ page }, use) => {
+        await use(new OrganizationProfilePage(page));
       },
 
-    dashboardPage: 
-      async ({ page }, use) => 
-      {
-        await use(new DashboardPage(page));
-      },
+  forgotUsernamePage: 
+    async ({ page }, use) => {
+      await use(new ForgotUsernamePage(page));
+    },
 
-    organizationProfilePage: 
-      async ({ page }, use) => 
-        {
-          await use(new OrganizationProfilePage(page));
-        },
+  forgotPasswordPage: 
+    async ({ page }, use) => {
+      await use(new ForgotPasswordPage(page));
+    },
 
-    forgotUsernamePage: 
-      async ({ page }, use) => 
-      {
-        await use(new ForgotUsernamePage(page));
-      },
+  providerCreatePage: 
+    async ({ page }, use) => {
+      await use(new ProviderCreatePage(page));
+    },
 
-    forgotPasswordPage: 
-      async ({ page }, use) => 
-      {
-        await use(new ForgotPasswordPage(page));
-      },
+  providerEditPage: 
+    async ({ page }, use) => {
+      await use(new ProviderEditPage(page));
+    },
 
-    providerCreatePage: 
-      async ({ page }, use) => 
-      {
-        await use(new ProviderCreatePage(page));
-      },
+  providerDetailPage: 
+    async ({ page }, use) => {
+      await use(new ProviderDetailPage(page));
+    },
 
-    providerEditPage: 
-      async ({ page }, use) => 
-      {
-        await use(new ProviderEditPage(page));
-      },
-
-    providerDetailPage: 
-      async ({ page }, use) => 
-      {
-        await use(new ProviderDetailPage(page));
-      },
-
-    providerListPage: 
-      async ({ page }, use) => 
-      {
-        await use(new ProviderListPage(page));
-      },
-  }
-);
+  providerListPage: 
+    async ({ page }, use) => {
+      await use(new ProviderListPage(page));
+    }
+});
 
 export { expect };

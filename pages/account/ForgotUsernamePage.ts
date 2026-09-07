@@ -25,8 +25,7 @@ export class ForgotUsernamePage
   readonly backToLoginLink: Locator;
   readonly privacyPolicyLink: Locator;
 
-  constructor(page: Page) 
-  {
+  constructor(page: Page) {
     this.page = page;
 
     this.pageTitle = page
@@ -39,58 +38,48 @@ export class ForgotUsernamePage
       .getByLabel('Email');
 
     this.submitButton = page
-      .getByRole('button', 
-        { 
+      .getByRole('button', { 
           name: 'Submit' 
         });
 
     this.forgotPasswordLink = page
-      .getByRole('link', 
-        {
+      .getByRole('link', {
           name: 'Forgot password?'
         });
 
     this.backToLoginLink = page
-      .getByRole('link', 
-        {
+      .getByRole('link', {
           name: 'Back to Login'
         });
 
     this.privacyPolicyLink = page
-      .getByRole('link', 
-        {
+      .getByRole('link', {
           name: 'Privacy Policy'
         });
   }
 
-  async goto() 
-  {
+  async goto() {
     await this.page.goto(this.forgotUsernamePath);
   }
 
-  async fillEmail(email: string) 
-  {
+  async fillEmail(email: string) {
     await this.emailInput.fill(email);
   }
 
-  async clickSubmit() 
-  {
+  async clickSubmit() {
     await this.submitButton.click();
   }
 
-  async submitEmail(email: string) 
-  {
+  async submitEmail(email: string) {
     await this.fillEmail(email);
     await this.clickSubmit();
   }
 
-  async goToForgotPassword() 
-  {
+  async goToForgotPassword() {
     await this.forgotPasswordLink.click();
   }
 
-  async goBackToLogin()
-  {
+  async goBackToLogin() {
     await this.backToLoginLink.click();
   }
 }

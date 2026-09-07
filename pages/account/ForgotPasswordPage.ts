@@ -1,11 +1,9 @@
-import 
-{ 
+import { 
   Page, 
   Locator 
 } from '@playwright/test';
 
-export class ForgotPasswordPage 
-{
+export class ForgotPasswordPage {
   readonly page: Page;
 
   readonly signInPath = '/account/sign-in';
@@ -26,8 +24,7 @@ export class ForgotPasswordPage
   readonly backToLoginLink: Locator;
   readonly privacyPolicyLink: Locator;
 
-  constructor(page: Page) 
-  {
+  constructor(page: Page) {
     this.page = page;
 
     this.pageTitle = page
@@ -42,58 +39,48 @@ export class ForgotPasswordPage
     this.usernameInput = page.getByLabel('User Name');
 
     this.submitButton = page
-      .getByRole('button', 
-        { 
+      .getByRole('button', { 
           name: 'Submit' 
         });
 
     this.forgotUsernameLink = page
-      .getByRole('link', 
-        {
+      .getByRole('link', {
           name: 'Forgot User Name?'
         });
 
     this.backToLoginLink = page
-      .getByRole('link', 
-        {
+      .getByRole('link', {
           name: 'Back to Login'
         });
 
     this.privacyPolicyLink = page
-      .getByRole('link', 
-        {
+      .getByRole('link', {
           name: 'Privacy Policy'
         });
   }
 
-  async goto() 
-  {
+  async goto() {
     await this.page.goto(this.forgotPasswordPath);
   }
 
-  async fillUsername(username: string) 
-  {
+  async fillUsername(username: string) {
     await this.usernameInput.fill(username);
   }
 
-  async clickSubmit() 
-  {
+  async clickSubmit() {
     await this.submitButton.click();
   }
 
-  async submitUsername(username: string) 
-  {
+  async submitUsername(username: string) {
     await this.fillUsername(username);
     await this.clickSubmit();
   }
 
-  async goToForgotUsername() 
-  {
+  async goToForgotUsername() {
     await this.forgotUsernameLink.click();
   }
 
-  async goBackToLogin()
-  {
+  async goBackToLogin() {
     await this.backToLoginLink.click();
   }
 }
