@@ -1,31 +1,20 @@
-import 
-{ 
+import { 
     test, 
     expect 
 } from '../../fixtures/base';
 
-import 
-{ 
-    HtmlAttribute, 
-    InputType 
-} from '../../utils/constants';
+import { HtmlAttribute } from '../../utils/constants';
 
-import 
-{ 
-    emailAddress
-} from '../../test-data/user';
+import { emailAddress } from '../../test-data/user';
 
-test.describe('Coordinator App - Forgot Username Page', () => 
-{
+test.describe('Coordinator App - Forgot Username Page', () => {
     test.beforeEach(
-        async ({ forgotUsernamePage }) => 
-        {
+        async ({ forgotUsernamePage }) => {
             await forgotUsernamePage.goto();
         });
 
     test('TC-001: Forgot Username page should load successfully', 
-        async ({ forgotUsernamePage }) => 
-        {
+        async ({ forgotUsernamePage }) => {
             await expect(forgotUsernamePage.pageTitle)
                 .toBeVisible();
 
@@ -41,16 +30,14 @@ test.describe('Coordinator App - Forgot Username Page', () =>
     );
 
     test('TC-002: Email field should be required', 
-        async ({ forgotUsernamePage }) => 
-        {
+        async ({ forgotUsernamePage }) => {
             await expect(forgotUsernamePage.emailInput)
                 .toHaveAttribute(HtmlAttribute.REQUIRED, '');
         }
     );
 
     test('TC-003: Email field should accept a valid email address', 
-        async ({ forgotUsernamePage }) => 
-        {
+        async ({ forgotUsernamePage }) => {
             const email = emailAddress.testEmail;
 
             await forgotUsernamePage.fillEmail(email);
@@ -61,8 +48,7 @@ test.describe('Coordinator App - Forgot Username Page', () =>
     );
 
     test('TC-004: Submit with empty email should not leave Forgot Username page', 
-        async ({ page, forgotUsernamePage }) => 
-        {
+        async ({ page, forgotUsernamePage }) => {
             await forgotUsernamePage.clickSubmit();
 
             await expect(forgotUsernamePage.emailInput)
@@ -74,8 +60,7 @@ test.describe('Coordinator App - Forgot Username Page', () =>
     );
 
     test('TC-005: Forgot password link should navigate to Forgot Password page', 
-        async ({ page, forgotUsernamePage }) => 
-        {
+        async ({ page, forgotUsernamePage }) => {
             await expect(forgotUsernamePage.forgotPasswordLink)
                 .toHaveAttribute(
                     HtmlAttribute.HREF,
@@ -90,8 +75,7 @@ test.describe('Coordinator App - Forgot Username Page', () =>
     );
 
     test('TC-006: Back to Login link should navigate to Login page', 
-        async ({ page, forgotUsernamePage }) => 
-        {
+        async ({ page, forgotUsernamePage }) => {
             await expect(forgotUsernamePage.backToLoginLink)
                 .toHaveAttribute(
                     HtmlAttribute.HREF,
@@ -106,8 +90,7 @@ test.describe('Coordinator App - Forgot Username Page', () =>
     );
 
     test('TC-007: Privacy Policy should open in a new tab', 
-        async ({ page, forgotUsernamePage }) => 
-        {
+        async ({ page, forgotUsernamePage }) => {
             const popupEvent = page.waitForEvent('popup');
 
             await forgotUsernamePage.privacyPolicyLink.click();

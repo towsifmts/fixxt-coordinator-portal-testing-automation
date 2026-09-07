@@ -1,17 +1,11 @@
-import 
-{ 
+import { 
   Page, 
-  Locator,
-  expect 
+  Locator
 } from '@playwright/test';
 
-import 
-{ 
-    AGENCY_ID 
-} from '../../test-data/provider';
+import { AGENCY_ID } from '../../test-data/provider';
 
-export class ProviderDetailPage
-{
+export class ProviderDetailPage {
     readonly page: Page;
 
     readonly providerDetailsPath = 

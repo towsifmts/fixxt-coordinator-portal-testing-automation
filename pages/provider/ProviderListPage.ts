@@ -1,16 +1,11 @@
-import 
-{ 
+import { 
   Page, 
   Locator 
 } from '@playwright/test';
 
-import 
-{ 
-  AGENCY_ID 
-} from '../../test-data/provider';
+import { AGENCY_ID } from '../../test-data/provider';
 
-export class ProviderListPage 
-{
+export class ProviderListPage {
   readonly page: Page;
 
   readonly activeProvidersPath =
@@ -18,21 +13,18 @@ export class ProviderListPage
 
   readonly addButton: Locator;
 
-  constructor(page: Page) 
-  {
+  constructor(page: Page) {
     this.page = page;
 
     this.addButton = page
         .locator('.tooltip-label.ag-right-icon[aria-label="Add"]');
   }
 
-  async gotoActiveProviders() 
-  {
+  async gotoActiveProviders() {
     await this.page.goto(this.activeProvidersPath);
   }
 
-  async clickAdd() 
-  {
+  async clickAdd() {
     await this.addButton.click();
   }
 }

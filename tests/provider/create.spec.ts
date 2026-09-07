@@ -1,21 +1,13 @@
-import 
-{ 
+import { 
     test, 
     expect 
 } from '../../fixtures/base';
 
-import 
-{ 
-    validUser 
-} from '../../test-data/user';
+import { validUser } from '../../test-data/user';
 
-import 
-{ 
-    organization 
-} from '../../test-data/organization';
+import { organization } from '../../test-data/organization';
 
-import 
-{ 
+import { 
     providerTestData,
     providerStatusOptions,
     selectedProviderStatus,
@@ -25,49 +17,45 @@ import
     abnVerify
 } from '../../test-data/provider';
 
-test.describe('Coordinator App - Create Provider', () => 
-{
-  test.beforeEach(
-    async ({
-        loginPage,
-        dashboardPage,
-        organizationProfilePage,
-        providerListPage,
-        providerCreatePage,
-      }) => 
-    {
-      await loginPage.goto();
+test.describe('Coordinator App - Create Provider', () => {
+  test.beforeEach(async ({
+    loginPage,
+    dashboardPage,
+    organizationProfilePage,
+    providerListPage,
+    providerCreatePage,
+  }) => {
+    await loginPage.goto();
 
-      await loginPage.login(
-        validUser.username, 
-        validUser.password
-      );
+    await loginPage.login(
+      validUser.username, 
+      validUser.password
+    );
 
-      await expect(loginPage.page)
-        .toHaveURL(loginPage.loggedInPath);
+    await expect(loginPage.page)
+      .toHaveURL(loginPage.loggedInPath);
 
-      await dashboardPage
-        .selectOrganisation(organization.id);
+    await dashboardPage
+      .selectOrganisation(organization.id);
 
-      await expect(organizationProfilePage.page)
-        .toHaveURL(organizationProfilePage.organizationProfilePath);
+    await expect(organizationProfilePage.page)
+      .toHaveURL(organizationProfilePage.organizationProfilePath);
 
-      await organizationProfilePage
-        .goToActiveProviders();
+    await organizationProfilePage
+      .goToActiveProviders();
 
-      await expect(providerListPage.page)
-        .toHaveURL(providerListPage.activeProvidersPath);
+    await expect(providerListPage.page)
+      .toHaveURL(providerListPage.activeProvidersPath);
 
-      await providerListPage.clickAdd();
+    await providerListPage.clickAdd();
 
-      await expect(providerCreatePage.page)
-        .toHaveURL(providerCreatePage.providerCreatePath);
+    await expect(providerCreatePage.page)
+      .toHaveURL(providerCreatePage.providerCreatePath);
     }
   );
 
   test('TC-001 - Verify Create Provider page loads',
-    async ({ providerCreatePage }) => 
-    {
+    async ({ providerCreatePage }) => {
       await expect( providerCreatePage.pageTitle)
         .toBeVisible();
 
@@ -83,8 +71,8 @@ test.describe('Coordinator App - Create Provider', () =>
   );
 
   test('TC-002 - Verify verified ABN populates Entity Name and Name',
-    async ({ providerCreatePage }) => 
-    {
+    async ({ providerCreatePage }) => {
+
       const digitsOnly = /^\d+$/;
 
       const abn = providerTestData.verifiedAbn;
@@ -117,8 +105,8 @@ test.describe('Coordinator App - Create Provider', () =>
   );
 
   test('TC-003 - Verify Status dropdown options', 
-    async ({providerCreatePage}) =>
-    {
+    async ({providerCreatePage}) => {
+
       await providerCreatePage
         .verifyAbn(providerTestData.verifiedAbn);
 
@@ -140,8 +128,8 @@ test.describe('Coordinator App - Create Provider', () =>
   );
   
   test('TC-004 - Select Service Types as per Support type', 
-    async ({ providerCreatePage }) => 
-    {
+    async ({ providerCreatePage }) => {
+
       await providerCreatePage
         .verifyAbn(providerTestData.verifiedAbn);
 
@@ -171,8 +159,8 @@ test.describe('Coordinator App - Create Provider', () =>
   );
 
   test('TC-005 - Verify required fields can be populated after ABN verification',
-    async ({ providerCreatePage }) => 
-    {
+    async ({ providerCreatePage }) => {
+
       const digitsOnly = /^\d+$/;
 
       const abn = providerTestData.verifiedAbn;
@@ -253,10 +241,9 @@ test.describe('Coordinator App - Create Provider', () =>
     }
   );
 
-  test(
-    'TC-006 - Create provider with valid details',
-    async ({ providerCreatePage, providerDetailPage }) => 
-    {
+  test('TC-006 - Create provider with valid details',
+    async ({ providerCreatePage, providerDetailPage }) => {
+
       const digitsOnly = /^\d+$/;
 
       const abn = providerTestData.verifiedAbn;

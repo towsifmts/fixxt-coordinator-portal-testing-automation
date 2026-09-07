@@ -1,16 +1,11 @@
-import 
-{ 
+import { 
   Page, 
   Locator 
 } from '@playwright/test';
 
-import 
-{ 
-  AGENCY_ID 
-} from '../../test-data/provider';
+import { AGENCY_ID } from '../../test-data/provider';
 
-export class OrganizationProfilePage 
-{
+export class OrganizationProfilePage {
   readonly page: Page;
 
   readonly organizationProfilePath = 
@@ -33,8 +28,7 @@ export class OrganizationProfilePage
     await this.providersMenu.click();
   }
 
-  async goToActiveProviders() 
-  {
+  async goToActiveProviders() {
     await this.clickProvidersMenu();
     await this.activeProvidersLink.click();
   }

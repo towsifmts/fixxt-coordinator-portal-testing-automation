@@ -1,12 +1,10 @@
 import 
 { 
   Page, 
-  Locator, 
-  expect 
+  Locator
 } from '@playwright/test';
 
-export class LoginPage 
-{
+export class LoginPage {
   readonly page: Page;
 
   readonly signInPath = '/account/sign-in';
@@ -28,8 +26,7 @@ export class LoginPage
   readonly forgotPasswordLink: Locator;
   readonly privacyPolicyLink: Locator;
 
-  constructor(page: Page) 
-  {
+  constructor(page: Page) {
     this.page = page;
 
     this.usernameInput = page.getByLabel('Username');
@@ -45,56 +42,46 @@ export class LoginPage
     this.visibilityHideButton = page.locator('button:has([data-testid="VisibilityOffIcon"])');
   }
 
-  async goto() 
-  {
+  async goto() {
     await this.page.goto(this.signInPath);
   }
 
-  async fillUsername(value: string) 
-  {
+  async fillUsername(value: string) {
     await this.usernameInput.fill(value);
   }
 
-  async fillPassword(value: string) 
-  {
+  async fillPassword(value: string) {
     await this.passwordInput.fill(value);
   }
 
-  async clickEnter() 
-  {
+  async clickEnter() {
     await this.enterButton.click();
   }
   
-  async login(username: string, password: string) 
-  {
+  async login(username: string, password: string) {
     await this.fillUsername(username);
     await this.fillPassword(password);
     
     await this.clickEnter();
   }
   
-  async submitWithEnterKey() 
-  {
+  async submitWithEnterKey() {
     await this.passwordInput.press('Enter');
   }
 
-  async showPassword() 
-  {
+  async showPassword() {
     await this.visibilityShowButton.click();
   }
 
-  async hidePassword() 
-  {
+  async hidePassword() {
     await this.visibilityHideButton.click();
   }
 
-  async goToForgotUsername() 
-  {
+  async goToForgotUsername() {
     await this.forgotUsernameLink.click();
   }
 
-  async goToForgotPassword() 
-  {
+  async goToForgotPassword() {
     await this.forgotPasswordLink.click();
   }
 }

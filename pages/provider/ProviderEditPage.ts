@@ -1,15 +1,11 @@
-import 
-{ 
-  Page, 
-  expect 
+import { 
+  Page
 } from '@playwright/test';
 
-export class ProviderEditPage
-{
+export class ProviderEditPage {
     readonly page: Page;
 
-    constructor(page: Page) 
-    {
+    constructor(page: Page) {
         this.page = page;
     }
 } 
