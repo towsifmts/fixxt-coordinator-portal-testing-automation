@@ -48,8 +48,8 @@ export const test = base.extend<Fixtures>({
 
   organizationProfilePage: 
     async ({ page }, use) => {
-        await use(new OrganizationProfilePage(page));
-      },
+      await use(new OrganizationProfilePage(page));
+    },
 
   forgotUsernamePage: 
     async ({ page }, use) => {

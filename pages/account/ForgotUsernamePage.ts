@@ -1,11 +1,9 @@
-import 
-{ 
+import { 
   Page, 
   Locator 
 } from '@playwright/test';
 
-export class ForgotUsernamePage 
-{
+export class ForgotUsernamePage {
   readonly page: Page;
 
   readonly signInPath = '/account/sign-in';
@@ -39,23 +37,23 @@ export class ForgotUsernamePage
 
     this.submitButton = page
       .getByRole('button', { 
-          name: 'Submit' 
-        });
+        name: 'Submit' 
+      });
 
     this.forgotPasswordLink = page
       .getByRole('link', {
-          name: 'Forgot password?'
-        });
+        name: 'Forgot password?'
+      });
 
     this.backToLoginLink = page
       .getByRole('link', {
-          name: 'Back to Login'
-        });
+        name: 'Back to Login'
+      });
 
     this.privacyPolicyLink = page
       .getByRole('link', {
-          name: 'Privacy Policy'
-        });
+        name: 'Privacy Policy'
+      });
   }
 
   async goto() {

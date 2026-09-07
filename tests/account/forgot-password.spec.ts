@@ -79,7 +79,10 @@ test.describe('Coordinator App - Forgot Password Page', () => {
   );
 
   test('TC-006: Back to Login link should navigate to Login page', 
-    async ({ page, forgotPasswordPage }) => {
+    async ({ 
+      page, 
+      forgotPasswordPage 
+    }) => {
       await expect(forgotPasswordPage.backToLoginLink)
         .toHaveAttribute(
           HtmlAttribute.HREF,
