@@ -178,12 +178,18 @@ test.describe('Coordinator App - Edit Provider', () => {
     }
   );
 
-  //TODO: Need to update. Depending on support type, service types will change.
   test('TC-010 - Edit Service Types',
     async ({ providerEditPage }) => {
 
-      await providerEditPage
-        .selectServiceTypes(providerTestData.ndisServiceTypes);
+    const supportType =
+      (await providerEditPage.supportTypeInput.textContent())?.trim();
+
+    const serviceTypes =
+      supportType === 'Mainstream'
+        ? providerTestData.mainstreamServiceTypes
+        : providerTestData.ndisServiceTypes;
+
+    await providerEditPage.selectServiceTypes(serviceTypes);
 
       await providerEditPage.page
         .keyboard.press('Escape');

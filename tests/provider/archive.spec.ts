@@ -8,9 +8,6 @@ import { validUser } from '../../test-data/user';
 import { organization } from '../../test-data/organization';
 
 test.describe('Coordinator App - Archive Provider', () => {
-
-    let providerId: string;
-
     test.beforeEach(async ({
       loginPage,
       dashboardPage,
